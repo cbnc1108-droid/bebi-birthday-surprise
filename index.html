@@ -370,6 +370,68 @@ button:active{
   100%{opacity:0;transform:translate(var(--tx),var(--ty)) scale(0.3)}
 }
 
+.modal-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.5);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:200;
+  animation:fadeInOverlay 0.3s ease;
+  padding:16px;
+}
+
+.modal-overlay.active{
+  display:flex;
+}
+
+@keyframes fadeInOverlay{
+  from{opacity:0}
+  to{opacity:1}
+}
+
+.modal-card{
+  width:min(680px,100%);
+  max-height:90vh;
+  padding:clamp(20px,5vw,40px);
+  border-radius:clamp(20px,6vw,30px);
+  background:rgba(255,255,255,0.95);
+  box-shadow:0 20px 80px rgba(160,70,100,0.3);
+  border:2px solid #e94f87;
+  backdrop-filter:blur(10px);
+  animation:modalSlideIn 0.5s ease;
+  overflow-y:auto;
+}
+
+@keyframes modalSlideIn{
+  from{opacity:0;transform:scale(0.9)}
+  to{opacity:1;transform:scale(1)}
+}
+
+.close-modal{
+  position:absolute;
+  top:clamp(10px,3vw,20px);
+  right:clamp(10px,3vw,20px);
+  background:linear-gradient(135deg,#e94f87 0%,#d63368 100%);
+  border:none;
+  border-radius:50%;
+  width:clamp(40px,8vw,50px);
+  height:clamp(40px,8vw,50px);
+  color:white;
+  font-size:clamp(1.2rem,3vw,1.5rem);
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 4px 12px rgba(233,79,135,0.3);
+  transition:all 0.3s ease;
+}
+
+.close-modal:hover{
+  transform:scale(1.1);
+}
+
 @media (max-width:480px){
   .balloon-area{
     height:auto;
@@ -383,6 +445,10 @@ button:active{
   button{
     width:100%;
     margin:8px 0;
+  }
+
+  .modal-card{
+    position:relative;
   }
 }
 
@@ -470,4 +536,294 @@ button:active{
     <button onclick="blowCake()">Blow the candles 🎂✨</button>
     <div id="cakeResult" class="hidden">
       <h1>🎉 YAAAAY! 🎉</h1>
-      <p>Wish officially sent to the universe.<br>No take-backs. 😌💕</p>\n      <button onclick="go(6)">Unlock your message 💌</button>\n    </div>\n  </div>\n</section>\n\n<!-- PAGE 6 - LOVE MESSAGE -->\n<section id="s6" class="screen">\n  <div class="card">\n    <div class="heart">🔐❤️</div>\n    <h2>One last surprise...</h2>\n    <p>I saved the softest part for last. 🥺❤️</p>\n    <button id="unlockButton" onclick="reveal()">Tap to unlock 💌</button>\n    <div id="final" class="hidden">\n      <h1>Happy Birthday, Bebi! 🥳❤️</h1>\n      <div class="divider"></div>\n      <p>Today is YOUR special day, so bawal muna maging suplada. 😂<br>You deserve all the love, attention, food, hugs, and lambing you can get.</p>\n      <p>Thank you for all the laughs, kulit moments, random conversations, sweet memories, and even the little chaotic moments.</p>\n      <p>Life is definitely more fun and interesting with you around.</p>\n      <p>You can be makulit, stubborn, moody, and sometimes a little impossible...<br>but somehow, you're still one of my favorite people to deal with. 😏❤️</p>\n      <p>I hope this new year of your life brings you more happiness, blessings, success, peace, and everything your heart has been wishing for.</p>\n      <p>And if you ever forget how special you are, come back to this little page and remember that someone took the time to make something just for you.</p>\n      <h2>Stay cute. Stay kulit. Stay ikaw. 🫶</h2>\n      <div class="secret">\n        <div style="font-size:clamp(2rem,8vw,3rem)">🥺💕</div>\n        <h2>Bebi, I miss you.</h2>\n        <p>Consider this your little reminder that you're always on my mind. ❤️</p>\n      </div>\n      <button onclick="go(7)">There's more... 💍</button>\n    </div>\n  </div>\n</section>\n\n<!-- PAGE 7 - SPECIAL MESSAGE FOR NICOLE -->\n<section id="s7" class="screen">\n  <div class="card">\n    <div style="font-size:clamp(4rem,12vw,6rem);animation:bounce 1.2s infinite alternate;margin:10px 0;">💫</div>\n    <h1 style="color:#d63368;">Nicole Anne Umayam Sucaldito 💍</h1>\n    <div class="flower-container">\n      <span class="flower">🌹</span>\n      <span class="flower">💐</span>\n      <span class="flower">🌹</span>\n    </div>\n    <div class="ring-box">\n      <div style="font-size:clamp(3rem,10vw,4rem);margin:10px 0;">💍✨</div>\n      <p style="font-weight:700;font-size:clamp(1.1rem,4vw,1.3rem);color:#d63368;margin:15px 0;">Will you marry me?</p>\n    </div>\n    <p>Nicole, you are my greatest blessing. From the moment I met you, I knew you were someone special. 🌟</p>\n    <p>I want to spend forever making you smile, holding your hand through life's adventures, and building the most beautiful love story with you. 💕</p>\n    <p>You deserve a partner who will love you completely, cherish every moment with you, and never take you for granted.</p>\n    <p>I promise to be that person. I promise to love you with all my heart, forever. 💑</p>\n    <div class="flower-container">\n      <span class="flower">💕</span>\n      <span class="flower">💘</span>\n      <span class="flower">💕</span>\n    </div>\n    <p style="font-weight:700;font-size:clamp(1.05rem,3.5vw,1.15rem);margin-top:20px;">Let's say \"YES\" to forever together! 🎊</p>\n    <button onclick="say_yes()">YES! I will marry you! 💍❤️</button>\n    <button onclick="go(8)" style="background:linear-gradient(135deg,#ff6f9d 0%,#e94f87 100%);">Continue to final surprise ✨</button>\n  </div>\n</section>\n\n<!-- PAGE 8 - FINAL CELEBRATION -->\n<section id="s8" class="screen">\n  <div class="card">\n    <div style="font-size:clamp(5rem,15vw,7rem);animation:bounce 1.2s infinite alternate;margin:10px 0;">🎊</div>\n    <h1 style="background:linear-gradient(135deg,#e94f87,#ff6f9d);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">WE'RE GETTING MARRIED!</h1>\n    <div class="flower-container">\n      <span class="flower">💐</span>\n      <span class="flower">🌹</span>\n      <span class="flower">💐</span>\n      <span class="flower">🌹</span>\n      <span class="flower">💐</span>\n    </div>\n    <div class="divider"></div>\n    <p style="font-size:clamp(1.1rem,4vw,1.3rem);font-weight:700;color:#d63368;margin:20px 0;">Forever starts now!</p>\n    <p>Carlo Brian & Nicole Anne Umayam Sucaldito</p>\n    <p style="font-size:clamp(0.95rem,3.5vw,1.05rem);font-weight:600;margin-top:15px;">A love story for the ages. 💑❤️</p>\n    <p style="opacity:0.7;font-size:clamp(0.9rem,3vw,1rem);">Today is just the beginning of our beautiful journey together.</p>\n    <div class="secret" style="margin-top:25px;background:linear-gradient(135deg,#fff3f7,#ffe4ec);">\n      <p style="font-weight:700;font-size:clamp(1rem,3.5vw,1.15rem);margin:10px 0;color:#d63368;">Thank you for saying YES!</p>\n      <p>I love you more than words could ever express. 🥺💕</p>\n      <p style="font-size:clamp(0.9rem,3vw,1rem);margin-top:15px;">From this moment on, forever is us. 🫶</p>\n      <p style="margin-top:20px;font-style:italic;font-size:clamp(0.95rem,3.5vw,1.05rem);">Love,<br><strong>Carlo Brian ❤️</strong></p>\n    </div>\n    <button onclick="restart()" style="margin-top:25px;">Replay from the beginning 🔁</button>\n  </div>\n</section>\n\n<div id="confetti" class="confetti"></div>\n\n<script>\nlet popped = 0;\n\nfunction go(page){\n  document.querySelectorAll(\".screen\").forEach(screen=>{\n    screen.classList.remove(\"active\");\n  });\n  const target = document.getElementById(\"s\" + page);\n  if(target){\n    target.classList.add(\"active\");\n  }\n  window.scrollTo({top:0,behavior:\"smooth\"});\n}\n\nfunction popBalloon(balloon){\n  if(balloon.classList.contains(\"popped\")){return;}\n  balloon.classList.add(\"popped\");\n  popped++;\n  const message = balloon.dataset.message;\n  document.getElementById(\"balloonMsg\").innerHTML = \"<div style='font-size:clamp(0.95rem,3.5vw,1.08rem);line-height:1.6'>\" + message + \"</div>\";\n  createHearts();\n  createSparkles(event);\n\n  if(popped === 1){\n    document.getElementById(\"balloonMsg\").innerHTML += \"<button class='next' onclick='focusNext()'>Next balloon 💕</button>\";\n  }\n  if(popped === 2){\n    document.getElementById(\"balloonMsg\").innerHTML += \"<button class='next' onclick='focusNext()'>One more 🎈💕</button>\";\n  }\n  if(popped === 3){\n    document.getElementById(\"balloonMsg\").innerHTML = \"<div style='font-size:clamp(0.95rem,3.5vw,1.08rem);line-height:1.6'>\" + message + \"</div>\" + \"<div style='margin-top:12px'>You popped all 3! 🎉🥺💕</div>\";\n    document.getElementById(\"nextBalloon\").classList.remove(\"hidden\");\n    celebrate();\n  }\n}\n\nfunction focusNext(){\n  const balloons = [...document.querySelectorAll(\".balloon:not(.popped)\")];\n  if(balloons.length){\n    balloons[0].scrollIntoView({behavior:\"smooth\",block:\"center\"});\n    balloons[0].animate([{transform:\"scale(1)\"},{transform:\"scale(1.2)\"},{transform:\"scale(1)\"}],{duration:500});\n  }\n}\n\nfunction openSecret(){\n  const box = document.getElementById(\"secretBox\");\n  box.classList.remove(\"hidden\");\n  createHearts();\n  celebrate();\n}\n\nfunction blowCake(){\n  document.getElementById(\"cakeResult\").classList.remove(\"hidden\");\n  celebrate();\n  createSparkles(event);\n}\n\nfunction reveal(){\n  document.getElementById(\"final\").classList.remove(\"hidden\");\n  document.getElementById(\"unlockButton\").classList.add(\"hidden\");\n  celebrate();\n}\n\nfunction say_yes(){\n  celebrate();\n  createHearts();\n  for(let i=0;i<10;i++){\n    createSparkles({clientX:Math.random()*window.innerWidth,clientY:Math.random()*window.innerHeight});\n  }\n  setTimeout(()=>{go(8)},1000);\n}\n\nfunction restart(){\n  popped = 0;\n  document.querySelectorAll(\".balloon\").forEach(balloon=>{\n    balloon.classList.remove(\"popped\");\n  });\n  document.getElementById(\"balloonMsg\").innerHTML = \"Tap a balloon! 👀🎈\";\n  document.getElementById(\"nextBalloon\").classList.add(\"hidden\");\n  document.getElementById(\"secretBox\").classList.add(\"hidden\");\n  document.getElementById(\"cakeResult\").classList.add(\"hidden\");\n  document.getElementById(\"final\").classList.add(\"hidden\");\n  document.getElementById(\"unlockButton\").classList.remove(\"hidden\");\n  go(1);\n}\n\nfunction celebrate(){\n  const container = document.getElementById(\"confetti\");\n  for(let i=0;i<80;i++){\n    const piece = document.createElement(\"i\");\n    piece.style.left = Math.random()*100 + \"%\";\n    piece.style.top = \"-20px\";\n    piece.style.background = [\"#ff7aa8\",\"#ffb3c6\",\"#ffd166\",\"#cdb4db\",\"#90dbf4\"][Math.floor(Math.random()*5)];\n    piece.style.animationDelay = Math.random()*1.2 + \"s\";\n    piece.style.transform = \"rotate(\" + Math.random()*360 + \"deg)\";\n    container.appendChild(piece);\n    setTimeout(()=>{piece.remove()},4000);\n  }\n}\n\nfunction createHearts(){\n  for(let i=0;i<6;i++){\n    setTimeout(()=>{\n      const heart = document.createElement(\"div\");\n      heart.className = \"floating-heart\";\n      heart.textContent = [\"❤️\",\"💕\",\"💗\",\"💖\",\"🥺\"][Math.floor(Math.random()*5)];\n      heart.style.left = (5 + Math.random()*90) + \"%\";\n      document.body.appendChild(heart);\n      setTimeout(()=>{heart.remove()},4000);\n    },i*120);\n  }\n}\n\nfunction createSparkles(event){\n  const centerX = event.clientX || window.innerWidth/2;\n  const centerY = event.clientY || window.innerHeight/2;\n  \n  for(let i=0;i<8;i++){\n    const sparkle = document.createElement(\"div\");\n    sparkle.className = \"sparkle\";\n    sparkle.textContent = \"✨\";\n    sparkle.style.left = centerX + \"px\";\n    sparkle.style.top = centerY + \"px\";\n    \n    const angle = (i/8) * Math.PI * 2;\n    const distance = 100;\n    const tx = Math.cos(angle) * distance;\n    const ty = Math.sin(angle) * distance;\n    \n    sparkle.style.setProperty(\"--tx\", tx + \"px\");\n    sparkle.style.setProperty(\"--ty\", ty + \"px\");\n    \n    document.body.appendChild(sparkle);\n    setTimeout(()=>{sparkle.remove()},1000);\n  }\n}\n\nsetInterval(()=>{\n  if(document.querySelector(\".screen.active\")){\n    createSmallHeart();\n  }\n},1800);\n\nfunction createSmallHeart(){\n  const heart = document.createElement(\"div\");\n  heart.className = \"floating-heart\";\n  heart.textContent = [\"❤️\",\"💕\",\"💗\"][Math.floor(Math.random()*3)];\n  heart.style.left = (5 + Math.random()*90) + \"%\";\n  document.body.appendChild(heart);\n  setTimeout(()=>{heart.remove()},4000);\n}\n</script>\n\n</body>\n</html>
+      <p>Wish officially sent to the universe.<br>No take-backs. 😌💕</p>
+      <button onclick="go(6)">Unlock your message 💌</button>
+    </div>
+  </div>
+</section>
+
+<!-- PAGE 6 - BIRTHDAY MESSAGE -->
+<section id="s6" class="screen">
+  <div class="card">
+    <div class="heart">🔐❤️</div>
+    <h2>One last surprise...</h2>
+    <p>I saved the softest part for last. 🥺❤️</p>
+    <button id="unlockButton" onclick="reveal()">Tap to unlock 💌</button>
+    <div id="final" class="hidden">
+      <h1>Happy Birthday, Bebi! 🥳❤️</h1>
+      <div class="divider"></div>
+      <p style="font-weight:700;font-size:clamp(1.05rem,4vw,1.2rem);color:#d63368;margin:20px 0;">Today is YOUR day - bawal muna maging suplada! 😂</p>
+      <p>You deserve all the love, attention, food, hugs, at lambing you can get. No complaints today, Bebi! 😉💕</p>
+      <p>Thank you for all the laughs, kulit moments, random conversations, sweet memories, and even the little chaotic moments we share.</p>
+      <p>Life is definitely more fun and interesting with you around.</p>
+      <p>You can be makulit, stubborn, moody, and sometimes a little impossible...<br>but somehow, you're still one of my favorite people to deal with. 😏❤️</p>
+      <p>I hope this new year of your life brings you more happiness, blessings, success, peace, and everything your heart has been wishing for.</p>
+      <p>And if you ever forget how special you are, come back to this little page and remember that someone took the time to make something just for you.</p>
+      <h2>Stay cute. Stay kulit. Stay ikaw. 🫶</h2>
+      <div class="secret">
+        <div style="font-size:clamp(2rem,8vw,3rem)">🥺💕</div>
+        <h2>Bebi, I miss you.</h2>
+        <p>Consider this your little reminder that you're always on my mind. ❤️</p>
+      </div>
+      <p><strong>Happy Birthday, Bebi.</strong><br><br>Love,<br><strong>Carlo Brian ❤️</strong></p>
+      <button onclick="openProposal()">Wait, there's more... 💍✨</button>
+    </div>
+  </div>
+</section>
+
+<!-- PAGE 7 - FINAL PAGE -->
+<section id="s7" class="screen">
+  <div class="card">
+    <div style="font-size:clamp(5rem,15vw,7rem);animation:bounce 1.2s infinite alternate;margin:10px 0;">🎊</div>
+    <h1 style="background:linear-gradient(135deg,#e94f87,#ff6f9d);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">The Best Part!</h1>
+    <div class="flower-container">
+      <span class="flower">💐</span>
+      <span class="flower">🌹</span>
+      <span class="flower">💐</span>
+    </div>
+    <p style="font-size:clamp(1rem,4vw,1.2rem);font-weight:700;color:#d63368;margin:20px 0;">There's something special I need to tell you...</p>
+    <p>Scroll down to see what I have in store for you, Bebi. 💕</p>
+    <button onclick="openProposal()" style="background:linear-gradient(135deg,#d63368 0%,#e94f87 100%);padding:clamp(15px,4vw,20px) clamp(25px,6vw,35px);font-size:clamp(1rem,4vw,1.15rem);">💍 Open the special surprise 💍</button>
+    <button onclick="restart()" style="background:linear-gradient(135deg,#ffb3c6 0%,#ff8fab 100%);margin-top:20px;">Replay from the beginning 🔁</button>
+  </div>
+</section>
+
+<!-- PROPOSAL MODAL -->
+<div id="proposalModal" class="modal-overlay">
+  <div class="modal-card" style="position:relative;">
+    <button class="close-modal" onclick="closeProposal()">✕</button>
+    <div style="text-align:center;margin-top:20px;">
+      <div style="font-size:clamp(4rem,12vw,6rem);animation:bounce 1.2s infinite alternate;margin:10px 0;">💫</div>
+      <h1 style="color:#d63368;font-size:clamp(1.8rem,6vw,3rem);margin-bottom:15px;">Nicole Anne Umayam Sucaldito 💍</h1>
+      <div class="flower-container">
+        <span class="flower">🌹</span>
+        <span class="flower">💐</span>
+        <span class="flower">🌹</span>
+      </div>
+      <div class="ring-box">
+        <div style="font-size:clamp(3rem,10vw,4rem);margin:10px 0;">💍✨</div>
+        <p style="font-weight:700;font-size:clamp(1.2rem,5vw,1.5rem);color:#d63368;margin:15px 0;">Will you marry me?</p>
+      </div>
+      <p style="font-size:clamp(0.95rem,3.5vw,1.1rem);line-height:1.8;margin:20px 0;">Nicole, you are my greatest blessing. From the moment I met you, I knew you were someone special. 🌟</p>
+      <p style="font-size:clamp(0.95rem,3.5vw,1.1rem);line-height:1.8;margin:20px 0;">I want to spend forever making you smile, holding your hand through life's adventures, and building the most beautiful love story with you. 💕</p>
+      <p style="font-size:clamp(0.95rem,3.5vw,1.1rem);line-height:1.8;margin:20px 0;">You deserve a partner who will love you completely, cherish every moment with you, and never take you for granted.</p>
+      <p style="font-size:clamp(0.95rem,3.5vw,1.1rem);line-height:1.8;margin:20px 0;">I promise to be that person. I promise to love you with all my heart, forever. 💑</p>
+      <div class="flower-container">
+        <span class="flower">💕</span>
+        <span class="flower">💘</span>
+        <span class="flower">💕</span>
+      </div>
+      <p style="font-weight:700;font-size:clamp(1.1rem,4vw,1.3rem);color:#d63368;margin-top:25px;margin-bottom:20px;">Let's say "YES" to forever together! 🎊</p>
+      <button onclick="say_yes()" style="width:100%;background:linear-gradient(135deg,#e94f87 0%,#d63368 100%);padding:clamp(15px,4vw,20px) clamp(20px,5vw,28px);font-size:clamp(1rem,3.5vw,1.15rem);">YES! I will marry you! 💍❤️</button>
+      <p style="font-size:clamp(0.9rem,3vw,1rem);margin-top:20px;opacity:0.7;">or just close this to continue enjoying your birthday 😊</p>
+    </div>
+  </div>
+</div>
+
+<!-- CELEBRATION MODAL -->
+<div id="celebrationModal" class="modal-overlay">
+  <div class="modal-card" style="position:relative;">
+    <button class="close-modal" onclick="closeCelebration()">✕</button>
+    <div style="text-align:center;margin-top:20px;">
+      <div style="font-size:clamp(5rem,15vw,7rem);animation:bounce 1.2s infinite alternate;margin:10px 0;">🎊</div>
+      <h1 style="background:linear-gradient(135deg,#e94f87,#ff6f9d);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-size:clamp(1.8rem,6vw,3rem);">WE'RE GETTING MARRIED!</h1>
+      <div class="flower-container">
+        <span class="flower">💐</span>
+        <span class="flower">🌹</span>
+        <span class="flower">💐</span>
+        <span class="flower">🌹</span>
+        <span class="flower">💐</span>
+      </div>
+      <div class="divider"></div>
+      <p style="font-size:clamp(1.1rem,4vw,1.3rem);font-weight:700;color:#d63368;margin:20px 0;">Forever starts now!</p>
+      <p style="font-size:clamp(0.95rem,3.5vw,1.05rem);font-weight:600;">Carlo Brian & Nicole Anne Umayam Sucaldito</p>
+      <p style="font-size:clamp(0.95rem,3.5vw,1.05rem);font-weight:600;margin-top:15px;">A love story for the ages. 💑❤️</p>
+      <p style="opacity:0.7;font-size:clamp(0.9rem,3vw,1rem);margin-top:15px;">Today is just the beginning of our beautiful journey together.</p>
+      <div class="secret" style="margin-top:25px;background:linear-gradient(135deg,#fff3f7,#ffe4ec);">
+        <p style="font-weight:700;font-size:clamp(1.05rem,3.5vw,1.2rem);margin:10px 0;color:#d63368;">Thank you for saying YES!</p>
+        <p style="font-size:clamp(0.95rem,3.5vw,1.05rem);">I love you more than words could ever express. 🥺💕</p>
+        <p style="font-size:clamp(0.9rem,3vw,1rem);margin-top:15px;">From this moment on, forever is us. 🫶</p>
+        <p style="margin-top:20px;font-style:italic;font-size:clamp(0.95rem,3.5vw,1.05rem);">Love,<br><strong>Carlo Brian ❤️</strong></p>
+      </div>
+      <button onclick="closeCelebration()" style="margin-top:25px;width:100%;background:linear-gradient(135deg,#ff6f9d 0%,#e94f87 100%);">Close & Continue 💕</button>
+    </div>
+  </div>
+</div>
+
+<div id="confetti" class="confetti"></div>
+
+<script>
+let popped = 0;
+
+function go(page){
+  document.querySelectorAll(".screen").forEach(screen=>{
+    screen.classList.remove("active");
+  });
+  const target = document.getElementById("s" + page);
+  if(target){
+    target.classList.add("active");
+  }
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function popBalloon(balloon){
+  if(balloon.classList.contains("popped")){return;}
+  balloon.classList.add("popped");
+  popped++;
+  const message = balloon.dataset.message;
+  document.getElementById("balloonMsg").innerHTML = "<div style='font-size:clamp(0.95rem,3.5vw,1.08rem);line-height:1.6'>" + message + "</div>";
+  createHearts();
+  createSparkles(event);
+
+  if(popped === 1){
+    document.getElementById("balloonMsg").innerHTML += "<button class='next' onclick='focusNext()'>Next balloon 💕</button>";
+  }
+  if(popped === 2){
+    document.getElementById("balloonMsg").innerHTML += "<button class='next' onclick='focusNext()'>One more 🎈💕</button>";
+  }
+  if(popped === 3){
+    document.getElementById("balloonMsg").innerHTML = "<div style='font-size:clamp(0.95rem,3.5vw,1.08rem);line-height:1.6'>" + message + "</div>" + "<div style='margin-top:12px'>You popped all 3! 🎉🥺💕</div>";
+    document.getElementById("nextBalloon").classList.remove("hidden");
+    celebrate();
+  }
+}
+
+function focusNext(){
+  const balloons = [...document.querySelectorAll(".balloon:not(.popped)")];
+  if(balloons.length){
+    balloons[0].scrollIntoView({behavior:"smooth",block:"center"});
+    balloons[0].animate([{transform:"scale(1)"},{transform:"scale(1.2)"},{transform:"scale(1)"}],{duration:500});
+  }
+}
+
+function openSecret(){
+  const box = document.getElementById("secretBox");
+  box.classList.remove("hidden");
+  createHearts();
+  celebrate();
+}
+
+function blowCake(){
+  document.getElementById("cakeResult").classList.remove("hidden");
+  celebrate();
+  createSparkles(event);
+}
+
+function reveal(){
+  document.getElementById("final").classList.remove("hidden");
+  document.getElementById("unlockButton").classList.add("hidden");
+  celebrate();
+}
+
+function openProposal(){
+  document.getElementById("proposalModal").classList.add("active");
+  celebrate();
+  createHearts();
+}
+
+function closeProposal(){
+  document.getElementById("proposalModal").classList.remove("active");
+}
+
+function say_yes(){
+  celebrate();
+  createHearts();
+  for(let i=0;i<10;i++){
+    createSparkles({clientX:Math.random()*window.innerWidth,clientY:Math.random()*window.innerHeight});
+  }
+  setTimeout(()=>{
+    closeProposal();
+    document.getElementById("celebrationModal").classList.add("active");
+  },800);
+}
+
+function closeCelebration(){
+  document.getElementById("celebrationModal").classList.remove("active");
+  go(7);
+}
+
+function restart(){
+  popped = 0;
+  document.querySelectorAll(".balloon").forEach(balloon=>{
+    balloon.classList.remove("popped");
+  });
+  document.getElementById("balloonMsg").innerHTML = "Tap a balloon! 👀🎈";
+  document.getElementById("nextBalloon").classList.add("hidden");
+  document.getElementById("secretBox").classList.add("hidden");
+  document.getElementById("cakeResult").classList.add("hidden");
+  document.getElementById("final").classList.add("hidden");
+  document.getElementById("unlockButton").classList.remove("hidden");
+  closeProposal();
+  closeCelebration();
+  go(1);
+}
+
+function celebrate(){
+  const container = document.getElementById("confetti");
+  for(let i=0;i<80;i++){
+    const piece = document.createElement("i");
+    piece.style.left = Math.random()*100 + "%";
+    piece.style.top = "-20px";
+    piece.style.background = ["#ff7aa8","#ffb3c6","#ffd166","#cdb4db","#90dbf4"][Math.floor(Math.random()*5)];
+    piece.style.animationDelay = Math.random()*1.2 + "s";
+    piece.style.transform = "rotate(" + Math.random()*360 + "deg)";
+    container.appendChild(piece);
+    setTimeout(()=>{piece.remove()},4000);
+  }
+}
+
+function createHearts(){
+  for(let i=0;i<6;i++){
+    setTimeout(()=>{
+      const heart = document.createElement("div");
+      heart.className = "floating-heart";
+      heart.textContent = ["❤️","💕","💗","💖","🥺"][Math.floor(Math.random()*5)];
+      heart.style.left = (5 + Math.random()*90) + "%";
+      document.body.appendChild(heart);
+      setTimeout(()=>{heart.remove()},4000);
+    },i*120);
+  }
+}
+
+function createSparkles(event){
+  const centerX = event.clientX || window.innerWidth/2;
+  const centerY = event.clientY || window.innerHeight/2;
+  
+  for(let i=0;i<8;i++){
+    const sparkle = document.createElement("div");
+    sparkle.className = "sparkle";
+    sparkle.textContent = "✨";
+    sparkle.style.left = centerX + "px";
+    sparkle.style.top = centerY + "px";
+    
+    const angle = (i/8) * Math.PI * 2;
+    const distance = 100;
+    const tx = Math.cos(angle) * distance;
+    const ty = Math.sin(angle) * distance;
+    
+    sparkle.style.setProperty("--tx", tx + "px");
+    sparkle.style.setProperty("--ty", ty + "px");
+    
+    document.body.appendChild(sparkle);
+    setTimeout(()=>{sparkle.remove()},1000);
+  }
+}
+
+setInterval(()=>{
+  if(document.querySelector(".screen.active")){
+    createSmallHeart();
+  }
+},1800);
+
+function createSmallHeart(){
+  const heart = document.createElement("div");
+  heart.className = "floating-heart";
+  heart.textContent = ["❤️","💕","💗"][Math.floor(Math.random()*3)];
+  heart.style.left = (5 + Math.random()*90) + "%";
+  document.body.appendChild(heart);
+  setTimeout(()=>{heart.remove()},4000);
+}
+</script>
+
+</body>
+</html>
