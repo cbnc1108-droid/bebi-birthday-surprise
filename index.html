@@ -3,13 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Happy Birthday, Nicole ❤️</title>
+<title>Happy Birthday, Bebi ❤️</title>
 
 <style>
 *{
   box-sizing:border-box;
   margin:0;
   padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
 }
 
 body{
@@ -59,6 +63,7 @@ h1{
   margin:12px 0 16px;
   color:#e94f87;
   font-weight:800;
+  text-shadow:0 2px 4px rgba(233,79,135,0.2);
 }
 
 h2{
@@ -99,11 +104,6 @@ button:hover{
 
 button:active{
   transform:scale(0.96);
-}
-
-button:focus{
-  outline:none;
-  border-color:rgba(233,79,135,0.5);
 }
 
 .small{
@@ -297,17 +297,18 @@ button:focus{
 
 .photo-placeholder{
   width:min(430px,100%);
-  height:auto;
-  max-height:500px;
+  height:400px;
   margin:clamp(12px,3vw,20px) auto;
   border-radius:clamp(15px,4vw,25px);
-  background:linear-gradient(135deg,#ffc2d1,#ff8fab);
+  background:linear-gradient(135deg,#ff8fab,#ffb3c6);
   display:flex;
   align-items:center;
   justify-content:center;
   overflow:hidden;
   box-shadow:0 18px 45px rgba(0,0,0,0.15);
   animation:photoSlide 0.6s ease;
+  border:3px solid #e94f87;
+  font-size:clamp(5rem,12vw,7rem);
 }
 
 @keyframes photoSlide{
@@ -315,18 +316,58 @@ button:focus{
   to{opacity:1;transform:scale(1)}
 }
 
-.photo-placeholder img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  border-radius:clamp(15px,4vw,25px);
-}
-
 .divider{
   height:2px;
   background:linear-gradient(90deg,transparent,#e94f87,transparent);
   margin:clamp(16px,4vw,24px) 0;
   opacity:0.3;
+}
+
+.flower-container{
+  display:flex;
+  gap:clamp(8px,2vw,16px);
+  justify-content:center;
+  flex-wrap:wrap;
+  margin:clamp(12px,3vw,20px) 0;
+}
+
+.flower{
+  font-size:clamp(2rem,5vw,3rem);
+  animation:sway 2s ease-in-out infinite;
+}
+
+@keyframes sway{
+  0%,100%{transform:rotate(-3deg)}
+  50%{transform:rotate(3deg)}
+}
+
+.ring-box{
+  background:linear-gradient(135deg,#ffe4ec 0%,#fff3f7 100%);
+  border:3px solid #e94f87;
+  border-radius:15px;
+  padding:clamp(20px,4vw,30px);
+  margin:clamp(15px,3vw,25px) 0;
+  animation:heartBeat 1.2s ease-in-out infinite;
+  box-shadow:0 10px 30px rgba(233,79,135,0.2);
+}
+
+@keyframes heartBeat{
+  0%,100%{transform:scale(1)}
+  25%{transform:scale(1.05)}
+  50%{transform:scale(1)}
+}
+
+.sparkle{
+  position:fixed;
+  pointer-events:none;
+  font-size:clamp(1.5rem,3vw,2rem);
+  animation:sparkleAnim 1s ease-out forwards;
+  z-index:50;
+}
+
+@keyframes sparkleAnim{
+  0%{opacity:1;transform:translate(0,0) scale(1)}
+  100%{opacity:0;transform:translate(var(--tx),var(--ty)) scale(0.3)}
 }
 
 @media (max-width:480px){
@@ -357,9 +398,14 @@ button:focus{
 <section id="s1" class="screen active">
   <div class="card">
     <div class="emoji-big">🎁</div>
-    <p class="small">A tiny surprise made especially for you...</p>
-    <h1>Nicole Anne ❤️</h1>
-    <p>Hey Nicole... I made you something special. 😌❤️<br>Happy Birthday! Let's have an amazing day together.</p>
+    <p class="small">A tiny surprise made especially for my Bebi...</p>
+    <h1>My Bebi ❤️</h1>
+    <div class="flower-container">
+      <span class="flower">🌹</span>
+      <span class="flower">🌺</span>
+      <span class="flower">🌸</span>
+    </div>
+    <p>Hey Bebi... I made you something magical. 😌❤️<br>But you have to play along first. Hehe.</p>
     <button onclick="go(2)">Tap to start ✨</button>
   </div>
 </section>
@@ -368,11 +414,11 @@ button:focus{
 <section id="s2" class="screen">
   <div class="card">
     <h2>🎈 Pop the balloons!</h2>
-    <p>I made 3 special messages for you. 😂💕<br>Pop them one by one, Nicole.</p>
+    <p>I only made you 3 because I'm nice. 😂💕<br>Pop them one by one, Bebi.</p>
     <div id="balloonArea" class="balloon-area">
-      <div class="balloon" data-message="Nicole, you're absolutely beautiful and amazing. 🥺❤️" onclick="popBalloon(this)">🎈</div>
-      <div class="balloon" data-message="I miss you so much more than words can say. 🥺💕" onclick="popBalloon(this)">🎈</div>
-      <div class="balloon" data-message="Let's build a happy life together, forever. 🤗❤️" onclick="popBalloon(this)">🎈</div>
+      <div class="balloon" data-message="Bebi, you're so cute. It's actually unfair. 🥺❤️" onclick="popBalloon(this)">🎈</div>
+      <div class="balloon" data-message="Nicole, you mean the world to me. Every single day. 🥺💕" onclick="popBalloon(this)">🎈</div>
+      <div class="balloon" data-message="If I could, I'd give you the biggest hug right now. 🤗❤️" onclick="popBalloon(this)">🎈</div>
     </div>
     <div id="balloonMsg" class="message">Tap a balloon! 👀🎈</div>
     <button id="nextBalloon" class="next hidden" onclick="go(3)">Okay, what's next? 👀💕</button>
@@ -384,10 +430,9 @@ button:focus{
   <div class="card">
     <div class="emoji-big">📸</div>
     <h2>Look who's special today! 🥺💕</h2>
-    <div class="photo-placeholder">
-      <img src="https://raw.githubusercontent.com/cbnc1108-droid/bebi-birthday-surprise/main/photo.jpg" alt="Nicole & Carlo">
-    </div>
-    <p>That's us, Nicole. I love this moment with you. 🥺💕</p>
+    <div class="photo-placeholder">💑</div>
+    <p>That's us, Bebi. Our beautiful moment together. 🥺💕</p>
+    <p style="font-size:clamp(0.85rem,3vw,0.95rem);opacity:0.8;">Carlo Brian ❤️ Nicole Anne Umayam Sucaldito</p>
     <button onclick="go(4)">Continue 💌</button>
   </div>
 </section>
@@ -396,181 +441,33 @@ button:focus{
 <section id="s4" class="screen">
   <div class="card">
     <div class="gift">🎁</div>
-    <h2>One more surprise, Nicole! 🥺</h2>
+    <h2>Wait... one more surprise, Bebi! 🥺</h2>
     <p>You thought the balloons were the whole thing?<br>Nope. 😂💕</p>
     <button onclick="openSecret()">Open the gift? 👀💌</button>
     <div id="secretBox" class="secret hidden">
       <div style="font-size:clamp(2.5rem,8vw,3.5rem)">💌</div>
-      <h2>A message from my heart...</h2>
-      <p>Nicole, I love you so much. 🥺💕</p>
-      <p>Every moment with you is precious. I want to build a beautiful future with you, filled with love, laughter, and endless happiness. 🤗😂</p>
-      <p>You make my life complete. ❤️</p>
+      <h2>A little message for you...</h2>
+      <p>Bebi, I miss you. 🥺💕</p>
+      <p>Nicole, you bring so much light and joy into my life. Every moment with you feels like a dream come true. 🌟</p>
+      <p>I don't always say it, but there are moments when I really wish you were here so I could give you a big hug and annoy you in person. 🤗😂</p>
+      <p>I hope you know how special you are to me. ❤️</p>
       <button onclick="go(5)">One more thing... 🎂</button>
     </div>
   </div>
 </section>
 
-<!-- PAGE 5 -->
+<!-- PAGE 5 - CAKE -->
 <section id="s5" class="screen">
   <div class="card">
     <div class="cake">🎂</div>
-    <h2>Make a wish, Nicole! ✨</h2>
-    <p>It's time for your birthday cake. 😂🎂<br>Make a wish and blow out the candles!</p>
+    <h2>Make a wish, Bebi! ✨</h2>
+    <p>Okay birthday girl...<br>Time for your cake. 😂🎂</p>
+    <div class="flower-container">
+      <span class="flower">💐</span>
+      <span class="flower">🌷</span>
+      <span class="flower">🌹</span>
+    </div>
     <button onclick="blowCake()">Blow the candles 🎂✨</button>
     <div id="cakeResult" class="hidden">
-      <h1>🎉 HAPPY BIRTHDAY! 🎉</h1>
-      <p>Your wish is sent to the universe.<br>Dreams come true when shared with someone special. 😌💕</p>
-      <button onclick="go(6)">Unlock your message 💌</button>
-    </div>
-  </div>
-</section>
-
-<!-- PAGE 6 -->
-<section id="s6" class="screen">
-  <div class="card">
-    <div class="heart">🔐❤️</div>
-    <h2>One last surprise...</h2>
-    <p>I saved the most important part for last. 🥺❤️</p>
-    <button id="unlockButton" onclick="reveal()">Tap to unlock 💌</button>
-    <div id="final" class="hidden">
-      <h1>Happy Birthday, Nicole Anne! 🥳❤️</h1>
-      <div class="divider"></div>
-      <p>Today is YOUR special day! 🎉<br>You deserve all the love, joy, hugs, and happiness in the world.</p>
-      <p>Thank you for all the beautiful memories we've shared - your smile, your laugh, your kindness, and the way you make every moment special.</p>
-      <p>Life is so much better with you in it.</p>
-      <p>You're beautiful, talented, and amazing in every way. 💫<br>Never forget how special you are to me. 😊❤️</p>
-      <p>I promise to love you, cherish you, and make you happy forever. Together, we'll build a beautiful life filled with love, dreams, and endless memories.</p>
-      <h2>I can't wait to spend forever with you. 🫶</h2>
-      <div class="secret">
-        <div style="font-size:clamp(2rem,8vw,3rem)">💍💕</div>
-        <h2>Nicole Anne Umayam Sucaldito</h2>
-        <p>Will you marry me and start our happily ever after? 🥺❤️</p>
-      </div>
-      <p><strong>Happy Birthday, my love.</strong><br><br>Forever yours,<br><strong>Carlo Brian ❤️</strong></p>
-      <button onclick="restart()">Play again 🔁</button>
-    </div>
-  </div>
-</section>
-
-<div id="confetti" class="confetti"></div>
-
-<script>
-let popped = 0;
-
-function go(page){
-  document.querySelectorAll(".screen").forEach(screen=>{
-    screen.classList.remove("active");
-  });
-  const target = document.getElementById("s" + page);
-  if(target){
-    target.classList.add("active");
-  }
-  window.scrollTo({top:0,behavior:"smooth"});
-}
-
-function popBalloon(balloon){
-  if(balloon.classList.contains("popped")){return;}
-  balloon.classList.add("popped");
-  popped++;
-  const message = balloon.dataset.message;
-  document.getElementById("balloonMsg").innerHTML = "<div style='font-size:clamp(0.95rem,3.5vw,1.08rem);line-height:1.6'>" + message + "</div>";
-  createHearts();
-
-  if(popped === 1){
-    document.getElementById("balloonMsg").innerHTML += "<button class='next' onclick='focusNext()'>Next balloon 💕</button>";
-  }
-  if(popped === 2){
-    document.getElementById("balloonMsg").innerHTML += "<button class='next' onclick='focusNext()'>One more 🎈💕</button>";
-  }
-  if(popped === 3){
-    document.getElementById("balloonMsg").innerHTML = "<div style='font-size:clamp(0.95rem,3.5vw,1.08rem);line-height:1.6'>" + message + "</div>" + "<div style='margin-top:12px'>You popped all 3! 🎉🥺💕</div>";
-    document.getElementById("nextBalloon").classList.remove("hidden");
-    celebrate();
-  }
-}
-
-function focusNext(){
-  const balloons = [...document.querySelectorAll(".balloon:not(.popped)")];
-  if(balloons.length){
-    balloons[0].scrollIntoView({behavior:"smooth",block:"center"});
-    balloons[0].animate([{transform:"scale(1)"},{transform:"scale(1.2)"},{transform:"scale(1)"}],{duration:500});
-  }
-}
-
-function openSecret(){
-  const box = document.getElementById("secretBox");
-  box.classList.remove("hidden");
-  createHearts();
-  celebrate();
-}
-
-function blowCake(){
-  document.getElementById("cakeResult").classList.remove("hidden");
-  celebrate();
-}
-
-function reveal(){
-  document.getElementById("final").classList.remove("hidden");
-  document.getElementById("unlockButton").classList.add("hidden");
-  celebrate();
-}
-
-function restart(){
-  popped = 0;
-  document.querySelectorAll(".balloon").forEach(balloon=>{
-    balloon.classList.remove("popped");
-  });
-  document.getElementById("balloonMsg").innerHTML = "Tap a balloon! 👀🎈";
-  document.getElementById("nextBalloon").classList.add("hidden");
-  document.getElementById("secretBox").classList.add("hidden");
-  document.getElementById("cakeResult").classList.add("hidden");
-  document.getElementById("final").classList.add("hidden");
-  document.getElementById("unlockButton").classList.remove("hidden");
-  go(1);
-}
-
-function celebrate(){
-  const container = document.getElementById("confetti");
-  for(let i=0;i<80;i++){
-    const piece = document.createElement("i");
-    piece.style.left = Math.random()*100 + "%";
-    piece.style.top = "-20px";
-    piece.style.background = ["#ff7aa8","#ffb3c6","#ffd166","#cdb4db","#90dbf4"][Math.floor(Math.random()*5)];
-    piece.style.animationDelay = Math.random()*1.2 + "s";
-    piece.style.transform = "rotate(" + Math.random()*360 + "deg)";
-    container.appendChild(piece);
-    setTimeout(()=>{piece.remove()},4000);
-  }
-}
-
-function createHearts(){
-  for(let i=0;i<6;i++){
-    setTimeout(()=>{
-      const heart = document.createElement("div");
-      heart.className = "floating-heart";
-      heart.textContent = ["❤️","💕","💗","💖","🥺"][Math.floor(Math.random()*5)];
-      heart.style.left = (5 + Math.random()*90) + "%";
-      document.body.appendChild(heart);
-      setTimeout(()=>{heart.remove()},4000);
-    },i*120);
-  }
-}
-
-setInterval(()=>{
-  if(document.querySelector(".screen.active")){
-    createSmallHeart();
-  }
-},1800);
-
-function createSmallHeart(){
-  const heart = document.createElement("div");
-  heart.className = "floating-heart";
-  heart.textContent = ["❤️","💕","💗"][Math.floor(Math.random()*3)];
-  heart.style.left = (5 + Math.random()*90) + "%";
-  document.body.appendChild(heart);
-  setTimeout(()=>{heart.remove()},4000);
-}
-</script>
-
-</body>
-</html>
+      <h1>🎉 YAAAAY! 🎉</h1>
+      <p>Wish officially sent to the universe.<br>No take-backs. 😌💕</p>\n      <button onclick="go(6)">Unlock your message 💌</button>\n    </div>\n  </div>\n</section>\n\n<!-- PAGE 6 - LOVE MESSAGE -->\n<section id="s6" class="screen">\n  <div class="card">\n    <div class="heart">🔐❤️</div>\n    <h2>One last surprise...</h2>\n    <p>I saved the softest part for last. 🥺❤️</p>\n    <button id="unlockButton" onclick="reveal()">Tap to unlock 💌</button>\n    <div id="final" class="hidden">\n      <h1>Happy Birthday, Bebi! 🥳❤️</h1>\n      <div class="divider"></div>\n      <p>Today is YOUR special day, so bawal muna maging suplada. 😂<br>You deserve all the love, attention, food, hugs, and lambing you can get.</p>\n      <p>Thank you for all the laughs, kulit moments, random conversations, sweet memories, and even the little chaotic moments.</p>\n      <p>Life is definitely more fun and interesting with you around.</p>\n      <p>You can be makulit, stubborn, moody, and sometimes a little impossible...<br>but somehow, you're still one of my favorite people to deal with. 😏❤️</p>\n      <p>I hope this new year of your life brings you more happiness, blessings, success, peace, and everything your heart has been wishing for.</p>\n      <p>And if you ever forget how special you are, come back to this little page and remember that someone took the time to make something just for you.</p>\n      <h2>Stay cute. Stay kulit. Stay ikaw. 🫶</h2>\n      <div class="secret">\n        <div style="font-size:clamp(2rem,8vw,3rem)">🥺💕</div>\n        <h2>Bebi, I miss you.</h2>\n        <p>Consider this your little reminder that you're always on my mind. ❤️</p>\n      </div>\n      <button onclick="go(7)">There's more... 💍</button>\n    </div>\n  </div>\n</section>\n\n<!-- PAGE 7 - SPECIAL MESSAGE FOR NICOLE -->\n<section id="s7" class="screen">\n  <div class="card">\n    <div style="font-size:clamp(4rem,12vw,6rem);animation:bounce 1.2s infinite alternate;margin:10px 0;">💫</div>\n    <h1 style="color:#d63368;">Nicole Anne Umayam Sucaldito 💍</h1>\n    <div class="flower-container">\n      <span class="flower">🌹</span>\n      <span class="flower">💐</span>\n      <span class="flower">🌹</span>\n    </div>\n    <div class="ring-box">\n      <div style="font-size:clamp(3rem,10vw,4rem);margin:10px 0;">💍✨</div>\n      <p style="font-weight:700;font-size:clamp(1.1rem,4vw,1.3rem);color:#d63368;margin:15px 0;">Will you marry me?</p>\n    </div>\n    <p>Nicole, you are my greatest blessing. From the moment I met you, I knew you were someone special. 🌟</p>\n    <p>I want to spend forever making you smile, holding your hand through life's adventures, and building the most beautiful love story with you. 💕</p>\n    <p>You deserve a partner who will love you completely, cherish every moment with you, and never take you for granted.</p>\n    <p>I promise to be that person. I promise to love you with all my heart, forever. 💑</p>\n    <div class="flower-container">\n      <span class="flower">💕</span>\n      <span class="flower">💘</span>\n      <span class="flower">💕</span>\n    </div>\n    <p style="font-weight:700;font-size:clamp(1.05rem,3.5vw,1.15rem);margin-top:20px;">Let's say \"YES\" to forever together! 🎊</p>\n    <button onclick="say_yes()">YES! I will marry you! 💍❤️</button>\n    <button onclick="go(8)" style="background:linear-gradient(135deg,#ff6f9d 0%,#e94f87 100%);">Continue to final surprise ✨</button>\n  </div>\n</section>\n\n<!-- PAGE 8 - FINAL CELEBRATION -->\n<section id="s8" class="screen">\n  <div class="card">\n    <div style="font-size:clamp(5rem,15vw,7rem);animation:bounce 1.2s infinite alternate;margin:10px 0;">🎊</div>\n    <h1 style="background:linear-gradient(135deg,#e94f87,#ff6f9d);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">WE'RE GETTING MARRIED!</h1>\n    <div class="flower-container">\n      <span class="flower">💐</span>\n      <span class="flower">🌹</span>\n      <span class="flower">💐</span>\n      <span class="flower">🌹</span>\n      <span class="flower">💐</span>\n    </div>\n    <div class="divider"></div>\n    <p style="font-size:clamp(1.1rem,4vw,1.3rem);font-weight:700;color:#d63368;margin:20px 0;">Forever starts now!</p>\n    <p>Carlo Brian & Nicole Anne Umayam Sucaldito</p>\n    <p style="font-size:clamp(0.95rem,3.5vw,1.05rem);font-weight:600;margin-top:15px;">A love story for the ages. 💑❤️</p>\n    <p style="opacity:0.7;font-size:clamp(0.9rem,3vw,1rem);">Today is just the beginning of our beautiful journey together.</p>\n    <div class="secret" style="margin-top:25px;background:linear-gradient(135deg,#fff3f7,#ffe4ec);">\n      <p style="font-weight:700;font-size:clamp(1rem,3.5vw,1.15rem);margin:10px 0;color:#d63368;">Thank you for saying YES!</p>\n      <p>I love you more than words could ever express. 🥺💕</p>\n      <p style="font-size:clamp(0.9rem,3vw,1rem);margin-top:15px;">From this moment on, forever is us. 🫶</p>\n      <p style="margin-top:20px;font-style:italic;font-size:clamp(0.95rem,3.5vw,1.05rem);">Love,<br><strong>Carlo Brian ❤️</strong></p>\n    </div>\n    <button onclick="restart()" style="margin-top:25px;">Replay from the beginning 🔁</button>\n  </div>\n</section>\n\n<div id="confetti" class="confetti"></div>\n\n<script>\nlet popped = 0;\n\nfunction go(page){\n  document.querySelectorAll(\".screen\").forEach(screen=>{\n    screen.classList.remove(\"active\");\n  });\n  const target = document.getElementById(\"s\" + page);\n  if(target){\n    target.classList.add(\"active\");\n  }\n  window.scrollTo({top:0,behavior:\"smooth\"});\n}\n\nfunction popBalloon(balloon){\n  if(balloon.classList.contains(\"popped\")){return;}\n  balloon.classList.add(\"popped\");\n  popped++;\n  const message = balloon.dataset.message;\n  document.getElementById(\"balloonMsg\").innerHTML = \"<div style='font-size:clamp(0.95rem,3.5vw,1.08rem);line-height:1.6'>\" + message + \"</div>\";\n  createHearts();\n  createSparkles(event);\n\n  if(popped === 1){\n    document.getElementById(\"balloonMsg\").innerHTML += \"<button class='next' onclick='focusNext()'>Next balloon 💕</button>\";\n  }\n  if(popped === 2){\n    document.getElementById(\"balloonMsg\").innerHTML += \"<button class='next' onclick='focusNext()'>One more 🎈💕</button>\";\n  }\n  if(popped === 3){\n    document.getElementById(\"balloonMsg\").innerHTML = \"<div style='font-size:clamp(0.95rem,3.5vw,1.08rem);line-height:1.6'>\" + message + \"</div>\" + \"<div style='margin-top:12px'>You popped all 3! 🎉🥺💕</div>\";\n    document.getElementById(\"nextBalloon\").classList.remove(\"hidden\");\n    celebrate();\n  }\n}\n\nfunction focusNext(){\n  const balloons = [...document.querySelectorAll(\".balloon:not(.popped)\")];\n  if(balloons.length){\n    balloons[0].scrollIntoView({behavior:\"smooth\",block:\"center\"});\n    balloons[0].animate([{transform:\"scale(1)\"},{transform:\"scale(1.2)\"},{transform:\"scale(1)\"}],{duration:500});\n  }\n}\n\nfunction openSecret(){\n  const box = document.getElementById(\"secretBox\");\n  box.classList.remove(\"hidden\");\n  createHearts();\n  celebrate();\n}\n\nfunction blowCake(){\n  document.getElementById(\"cakeResult\").classList.remove(\"hidden\");\n  celebrate();\n  createSparkles(event);\n}\n\nfunction reveal(){\n  document.getElementById(\"final\").classList.remove(\"hidden\");\n  document.getElementById(\"unlockButton\").classList.add(\"hidden\");\n  celebrate();\n}\n\nfunction say_yes(){\n  celebrate();\n  createHearts();\n  for(let i=0;i<10;i++){\n    createSparkles({clientX:Math.random()*window.innerWidth,clientY:Math.random()*window.innerHeight});\n  }\n  setTimeout(()=>{go(8)},1000);\n}\n\nfunction restart(){\n  popped = 0;\n  document.querySelectorAll(\".balloon\").forEach(balloon=>{\n    balloon.classList.remove(\"popped\");\n  });\n  document.getElementById(\"balloonMsg\").innerHTML = \"Tap a balloon! 👀🎈\";\n  document.getElementById(\"nextBalloon\").classList.add(\"hidden\");\n  document.getElementById(\"secretBox\").classList.add(\"hidden\");\n  document.getElementById(\"cakeResult\").classList.add(\"hidden\");\n  document.getElementById(\"final\").classList.add(\"hidden\");\n  document.getElementById(\"unlockButton\").classList.remove(\"hidden\");\n  go(1);\n}\n\nfunction celebrate(){\n  const container = document.getElementById(\"confetti\");\n  for(let i=0;i<80;i++){\n    const piece = document.createElement(\"i\");\n    piece.style.left = Math.random()*100 + \"%\";\n    piece.style.top = \"-20px\";\n    piece.style.background = [\"#ff7aa8\",\"#ffb3c6\",\"#ffd166\",\"#cdb4db\",\"#90dbf4\"][Math.floor(Math.random()*5)];\n    piece.style.animationDelay = Math.random()*1.2 + \"s\";\n    piece.style.transform = \"rotate(\" + Math.random()*360 + \"deg)\";\n    container.appendChild(piece);\n    setTimeout(()=>{piece.remove()},4000);\n  }\n}\n\nfunction createHearts(){\n  for(let i=0;i<6;i++){\n    setTimeout(()=>{\n      const heart = document.createElement(\"div\");\n      heart.className = \"floating-heart\";\n      heart.textContent = [\"❤️\",\"💕\",\"💗\",\"💖\",\"🥺\"][Math.floor(Math.random()*5)];\n      heart.style.left = (5 + Math.random()*90) + \"%\";\n      document.body.appendChild(heart);\n      setTimeout(()=>{heart.remove()},4000);\n    },i*120);\n  }\n}\n\nfunction createSparkles(event){\n  const centerX = event.clientX || window.innerWidth/2;\n  const centerY = event.clientY || window.innerHeight/2;\n  \n  for(let i=0;i<8;i++){\n    const sparkle = document.createElement(\"div\");\n    sparkle.className = \"sparkle\";\n    sparkle.textContent = \"✨\";\n    sparkle.style.left = centerX + \"px\";\n    sparkle.style.top = centerY + \"px\";\n    \n    const angle = (i/8) * Math.PI * 2;\n    const distance = 100;\n    const tx = Math.cos(angle) * distance;\n    const ty = Math.sin(angle) * distance;\n    \n    sparkle.style.setProperty(\"--tx\", tx + \"px\");\n    sparkle.style.setProperty(\"--ty\", ty + \"px\");\n    \n    document.body.appendChild(sparkle);\n    setTimeout(()=>{sparkle.remove()},1000);\n  }\n}\n\nsetInterval(()=>{\n  if(document.querySelector(\".screen.active\")){\n    createSmallHeart();\n  }\n},1800);\n\nfunction createSmallHeart(){\n  const heart = document.createElement(\"div\");\n  heart.className = \"floating-heart\";\n  heart.textContent = [\"❤️\",\"💕\",\"💗\"][Math.floor(Math.random()*3)];\n  heart.style.left = (5 + Math.random()*90) + \"%\";\n  document.body.appendChild(heart);\n  setTimeout(()=>{heart.remove()},4000);\n}\n</script>\n\n</body>\n</html>
